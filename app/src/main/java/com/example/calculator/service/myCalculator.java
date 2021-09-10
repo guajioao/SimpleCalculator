@@ -14,10 +14,10 @@ public class myCalculator {
             Calculator calculator = new Calculator(equation);
 
             try {
-                String ret = calculator.getResult();
+                String ret = calculator.getResult(e.getNumStack());
                 return ret;
             }catch (Exception ecp){
-                Log.i("myCalculator","获取结果失败");
+                Log.e("myCalculator","获取结果失败");
             }
 
         }catch (Exception ecp){

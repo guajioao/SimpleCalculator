@@ -1,9 +1,12 @@
 package com.example.calculator.out;
 
+import java.util.ArrayList;
+
 public class ArrayStack {
     private int maxSize; // 栈的大小
     private double[] stack; // 数组，数组模拟栈，数据就放在该数组
     private int top = -1;// top表示栈顶，初始化为-1
+    private int i=0;
 
     //构造器
     public ArrayStack(int maxSize) {
@@ -46,15 +49,17 @@ public class ArrayStack {
         return value;
     }
     //显示栈的情况[遍历栈]， 遍历时，需要从栈顶开始显示数据
-    public void list() {
+    public String list() {
         if(isEmpty()) {
             System.out.println("栈空，没有数据~~");
-            return;
+            return "";
         }
         //需要从栈顶开始显示数据
+        ArrayList ret = new ArrayList();
         for(int i = top; i >= 0 ; i--) {
-            System.out.printf("stack[%d]=%d\n", i, stack[i]);
+            ret.add(stack[i]);
         }
+        return ret.toString();
     }
     //返回运算符的优先级，优先级是程序员来确定, 优先级使用数字表示
     //数字越大，则优先级就越高.
@@ -93,6 +98,21 @@ public class ArrayStack {
                 break;
         }
         return res;
+    }
+
+//    public void clear(){
+//        this.stack = null;
+//    }
+
+    public double getElement() {
+        //先判断栈是否空
+        if(isEmpty()) {
+            //抛出异常
+            throw new RuntimeException("栈空，没有数据~");
+        }
+        double ret = stack[i];
+        i++;
+        return ret;
     }
 
 }

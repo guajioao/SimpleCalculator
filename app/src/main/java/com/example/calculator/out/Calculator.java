@@ -8,7 +8,7 @@ public class Calculator {
         this.expression=expression;
     }
 
-    public String getResult() {
+    public String getResult(ArrayStack doubleStack) {
         //创建两个栈，数栈，一个符号栈
         ArrayStack numStack = new ArrayStack(20);
         ArrayStack operStack = new ArrayStack(20);
@@ -25,7 +25,8 @@ public class Calculator {
             //依次得到expression 的每一个字符
             ch = expression.substring(index, index+1).charAt(0);
             //判断ch是什么，然后做相应的处理
-            if(operStack.isOper(ch)) {//如果是运算符
+            if(operStack.isOper(ch)) {
+                //如果是运算符
                 //判断当前的符号栈是否为空
                 if(!operStack.isEmpty()) {
                     //如果符号栈有操作符，就进行比较,如果当前的操作符的优先级小于或者等于栈中的操作符,就需要从数栈中pop出两个数,
@@ -78,7 +79,8 @@ public class Calculator {
                     //如果为空直接入符号栈
                     operStack.push(ch);
                 }
-            } else { //如果是数，则直接入数栈
+            }
+            else { //如果是数，则直接入数栈
 
                 //分析思路
                 //1. 当处理多位数时，不能发现是一个数就立即入栈，因为他可能是多位数
@@ -86,23 +88,45 @@ public class Calculator {
                 //3. 因此我们需要定义一个变量 字符串，用于拼接
 
                 //处理多位数
-                keepNum += ch;
-
-                //如果ch已经是expression的最后一位，就直接入栈
-                if (index == expression.length() - 1) {
+                if(ch=='%'){
+                    keepNum=""+doubleStack.getElement();
+                    //将非整数取出入栈
                     numStack.push(Double.parseDouble(keepNum));
-                }else{
-
-                    //判断下一个字符是不是数字，如果是数字，就继续扫描，如果是运算符，则入栈
-                    //注意是看后一位，不是index++
-                    if (operStack.isOper(expression.substring(index+1,index+2).charAt(0))) {
-                        //如果后一位是运算符，则入栈 keepNum = "1" 或者 "123"
+                    keepNum="";
+                }else if(ch=='.'){
+                    //如果ch已经是expression的最后一位，就将非整数取出入栈
+                    if (index == expression.length() - 1) {
                         numStack.push(Double.parseDouble(keepNum));
-                        //重要的!!!!!!, keepNum清空
-                        keepNum = "";
+                    }else{
+                        //判断下一个字符是不是数字，如果是数字，就继续扫描，如果是运算符，则入栈
+                        //注意是看后一位，不是index++
+                        if (operStack.isOper(expression.substring(index+1,index+2).charAt(0))) {
+                            //如果后一位是运算符，则入栈 keepNum = "1" 或者 "123"
+                            keepNum=""+doubleStack.getElement();
+                            numStack.push(Double.parseDouble(keepNum));
+                            //重要的!!!!!!, keepNum清空
+                            keepNum = "";
+                        }
+                    }
+                }else{
+                    keepNum += ch;
+                    //如果ch已经是expression的最后一位，就直接入栈
+                    if (index == expression.length() - 1) {
+                        numStack.push(Double.parseDouble(keepNum));
+                    }else{
 
+                        //判断下一个字符是不是数字，如果是数字，就继续扫描，如果是运算符，则入栈
+                        //注意是看后一位，不是index++
+                        if (operStack.isOper(expression.substring(index+1,index+2).charAt(0))) {
+                            //如果后一位是运算符，则入栈 keepNum = "1" 或者 "123"
+                            numStack.push(Double.parseDouble(keepNum));
+                            //重要的!!!!!!, keepNum清空
+                            keepNum = "";
+                        }
                     }
                 }
+
+
             }
             //让index + 1, 并判断是否扫描到expression最后.
             index++;

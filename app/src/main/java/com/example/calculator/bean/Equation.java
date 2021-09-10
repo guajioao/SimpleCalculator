@@ -8,74 +8,132 @@ import com.example.calculator.out.ArrayStack;
 import java.util.ArrayList;
 
 public class Equation {
-    ArrayList equation = null;
+    String equation = "";
     double currentNum;
+    double currentD=0;
+    boolean isDouble = false;
 
     //创建两个栈，数栈，一个符号栈
     ArrayStack numStack = new ArrayStack(20);
-    ArrayStack optStack = new ArrayStack(20);
+
+    public ArrayStack getNumStack() {
+        return numStack;
+    }
+
+    public void setNumStack(ArrayStack numStack) {
+        this.numStack = numStack;
+    }
+
+
     public Equation(){}
 
-    public void setEquation(ArrayList equation) {
+    public void setEquation(String equation) {
         this.equation = equation;
     }
 
-    public ArrayList getEquation() {
+    public String getEquation() {
         return equation;
     }
+
+    public double getCurrentNum() {
+        return currentNum;
+    }
+
+    public void setCurrentNum(double currentNum) {
+        this.currentNum = currentNum;
+    }
+
+    public double getCurrentD() {
+        return currentD;
+    }
+
+    public void setCurrentD(double currentD) {
+        this.currentD = currentD;
+    }
+
     private void push(String c){
         try {
-            equation.add(c);
+            String newE= equation+c;
+            this.setEquation(newE);
         }catch (Exception e){
-            System.out.println("Equation.push():添加失败");
+            Log.e("Equation","Equation.push():添加失败,c="+c);
         }
     }
-    public void pop(){
+    public String pop(){
         try {
-            equation.remove(equation.size()-1);
-
+            String ret = equation.substring(equation.length()-1,equation.length());
+            String newE = equation.substring(0,equation.length()-1);
+            this.setEquation(newE);
+            return ret;
         }catch (Exception e){
-
-            System.out.println("Equation.push():添加失败");
+            Log.e("Equation","Equation.pop()失败");
         }
+        return "";
     }
     public void addNumber(String num){
         try{
             currentNum*=10;
             double number = Double.parseDouble(num);
             currentNum+=number;
-//                numStack.push(number);
             this.push(num);
+            Log.i("Equation","addNumber:currentNum="+currentNum);
+            Log.i("Equation","addNumber:currentD="+currentD);
+            Log.i("Equation","addNumber:numStack="+numStack.list());
         }catch(NumberFormatException e) {
             e.toString();
-            Log.i("Equation","添加number失败:非double");
+            Log.e("Equation","添加number失败:非double");
         }catch (Exception e){
-            Log.i("Equation","添加number失败");
+            Log.e("Equation","添加number失败");
         }
     }
     public void addOperator(String c){
         try{
-            numStack.push(currentNum);
-            optStack.push(c.charAt(0));
+            this.pushIntoStack(currentNum);
             currentNum=0;
+            currentD=0;
             this.push(c);
+            Log.i("Equation","addOperator:currentNum="+currentNum);
+            Log.i("Equation","addOperator:currentD="+currentD);
+            Log.i("Equation","addOperator:numStack="+numStack.list());
         }catch(Exception e) {
             e.toString();
-            Log.i("Equation","添加operator失败");
+            Log.e("Equation","添加operator失败");
         }
     }
-
-    public static boolean isCorrect(ArrayList equation){
-
-        return true;
+    public void pushIntoStack(double num){
+        numStack.push(num);
+        Log.i("Equation","pushIntoStack:num="+num);
     }
+    public void inputPercent(){
+        currentD=currentNum*0.01;
+        currentNum=0;
+        numStack.push(currentNum+currentD);
+        this.push("%");
+        Log.i("Equation","inputPercent:currentNum="+currentNum);
+        Log.i("Equation","inputPercent:currentD="+currentD);
+        Log.i("Equation","inputPercent:numStack="+numStack.list());
+        Log.i("Equation","equation="+equation);
+    }
+    public void deletePercent(){
+        currentNum=currentD*100;
+        currentD=0;
+//        this.pop();
+        Log.i("Equation","deletePercent:currentNum="+currentNum);
+        Log.i("Equation","deletePercent:currentD="+currentD);
+
+    }
+
+
     public void clear(){
         try {
-            equation.clear();
+            this.setEquation("");
+            this.numStack = new ArrayStack(20);
+            this.currentD=0;
+            this.currentNum=0;
         }catch (Exception e){
             //Toast.makeText(Equation.this,"clear fail",Toast.LENGTH_SHORT).show();
             e.toString();
-            Log.i("Equation","clear()：清除失败");
+            Log.e("Equation","clear()：清除失败");
         }
     }
 }
