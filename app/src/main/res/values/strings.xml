@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="ScienceCalculator">科学计算器</string>
+    <string name="help">帮助</string>
+    <string name="welcome">Welcome To Calculator</string>
+    <string name="showE">there show your input</string>
+</resources>
