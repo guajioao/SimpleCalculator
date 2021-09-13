@@ -1,5 +1,7 @@
 package com.example.calculator.out;
 
+import java.text.DecimalFormat;
+
 public class Calculator {
     String expression;
 
@@ -93,22 +95,25 @@ public class Calculator {
                     //将非整数取出入栈
                     numStack.push(Double.parseDouble(keepNum));
                     keepNum="";
-                }else if(ch=='.'){
-                    //如果ch已经是expression的最后一位，就将非整数取出入栈
+                }else if(ch=='e'){
+                    numStack.push(Math.E);
+                    keepNum="";
+                }else if(ch=='s'||ch=='c'||ch=='t'||ch=='l'|ch=='L'||ch=='!'){
                     if (index == expression.length() - 1) {
                         numStack.push(Double.parseDouble(keepNum));
                     }else{
+
                         //判断下一个字符是不是数字，如果是数字，就继续扫描，如果是运算符，则入栈
                         //注意是看后一位，不是index++
                         if (operStack.isOper(expression.substring(index+1,index+2).charAt(0))) {
                             //如果后一位是运算符，则入栈 keepNum = "1" 或者 "123"
-                            keepNum=""+doubleStack.getElement();
                             numStack.push(Double.parseDouble(keepNum));
                             //重要的!!!!!!, keepNum清空
                             keepNum = "";
                         }
                     }
-                }else{
+                }
+                else{
                     keepNum += ch;
                     //如果ch已经是expression的最后一位，就直接入栈
                     if (index == expression.length() - 1) {
@@ -149,7 +154,11 @@ public class Calculator {
         }
         //将数栈的最后数，pop出，就是结果
         double res2 = numStack.pop();
-        return ""+res2;
+        String retS = (""+res2);
+        if((""+res2).length()>12){
+             retS = retS.substring(0,12).toString();
+        }
+        return retS;
     }
 
 

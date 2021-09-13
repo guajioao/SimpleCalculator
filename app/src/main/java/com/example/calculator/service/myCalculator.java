@@ -11,8 +11,8 @@ public class myCalculator {
         try{
             String equation = e.getEquation().toString();
             Log.i("myCalculator","待计算的公式为:"+equation);
+            Log.i("myCalculator","addOperator:numStack="+e.getNumStack().list());
             Calculator calculator = new Calculator(equation);
-
             try {
                 String ret = calculator.getResult(e.getNumStack());
                 return ret;

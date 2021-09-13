@@ -2,8 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/science"
-        android:title="@string/ScienceCalculator"
-        android:onClick="changeToSC"/>
+        android:title="@string/SimpleCalculator"
+        android:onClick="changeToSimC"/>
+    <item
+        android:id="@+id/tools"
+        android:title="@string/tools"
+        android:onClick="changeToTools"/>
     <item
         android:id="@+id/help"
         android:title="@string/help"

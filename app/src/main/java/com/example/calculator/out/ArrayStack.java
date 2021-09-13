@@ -75,7 +75,7 @@ public class ArrayStack {
         }
     }
     //判断是不是一个运算符
-    public boolean isOper(char val) {
+    public static boolean isOper(char val) {
         return val == '+' || val == '-' || val == '*' || val == '/'|| val=='('||val==')';
     }
     //计算方法
