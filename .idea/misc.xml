@@ -3,19 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/drawable/grid_button.xml" value="0.10740740740740741" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/drawable/keyboard.xml" value="0.1" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/drawable/operator_button.xml" value="0.26979166666666665" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout-land/activity_main.xml" value="0.4" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout-land/calculator.xml" value="0.11199294532627865" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout-port/activity_main.xml" value="0.13229166666666667" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/barmenu.xml" value="0.1" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/calculator.xml" value="0.264" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/grid_button.xml" value="0.17135416666666667" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/menu/bar_top.xml" value="0.264" />
-        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/menu/main.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/drawable/unix_change_board.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/activity_tool_with_roll.xml" value="0.13020833333333334" />
+        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/activity_tools.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/rate_window.xml" value="0.264" />
+        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/unix_window.xml" value="0.13020833333333334" />
+        <entry key="..\:/Android/AndroidStudioProject/Calculator/app/src/main/res/layout/view_wheel_date_picker.xml" value="0.1296875" />
       </map>
     </option>
   </component>

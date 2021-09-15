@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
+
     public void onNumberClick(View view){
         if(Judger.judgeNumber(equation)){
             Button button = findViewById(view.getId());
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             textEquation.setText(newEquation);
         }
     }
-
     public void onOperatorClick(View view){
         if(Judger.judgeOperator(equation)){
             try {
@@ -298,7 +299,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     public void onEClick(View view){
         //前面只可为操作符
         //作为一个数字使用
@@ -358,6 +358,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
@@ -367,9 +369,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.science:
-                Toast.makeText(this,"点击了科学计算器",Toast.LENGTH_SHORT).show();
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                Toast.makeText(this,"切换为科学计算器",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tools:
+
+                Intent intent = new Intent(MainActivity.this,ToolsActivity_withRoll.class);
+                startActivity(intent);
                 Toast.makeText(this,"点击了工具",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.help:

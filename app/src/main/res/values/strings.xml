@@ -6,4 +6,15 @@
     <string name="welcome">Welcome To Calculator</string>
     <string name="showE">there show your input</string>
     <string name="tools">其他工具</string>
+    <string name="cal">计算</string>
+    <string name="price">金额</string>
+    <string name="Year">Y</string>
+
+    <string name="Month">M</string>
+
+    <string name="Day">D</string>
+    <string name="inputNumber">数字</string>
+    <string name="calLen">长度</string>
+    <string name="calVer">体积</string>
+    <string name="ver">体积</string>
 </resources>

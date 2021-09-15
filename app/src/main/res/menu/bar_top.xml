@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/science"
-        android:title="@string/SimpleCalculator"
-        android:onClick="changeToSimC"/>
+        android:id="@+id/simple"
+        android:title="@string/SimpleCalculator"/>
     <item
-        android:id="@+id/tools"
-        android:title="@string/tools"
-        android:onClick="changeToTools"/>
+        android:id="@+id/science"
+        android:title="@string/ScienceCalculator"/>
     <item
         android:id="@+id/help"
-        android:title="@string/help"
-        android:onClick="showHelp"/>
+        android:title="@string/help"/>
 </menu>

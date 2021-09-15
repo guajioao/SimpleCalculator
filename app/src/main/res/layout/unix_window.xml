@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="0dp">
+    <!-- 切换按钮-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/calLen"
+            android:text="@string/calLen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/calVer"
+            android:text="@string/calVer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <!-- 布局卡片，默认显示长度-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/unix_card"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/lin_l"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/inputL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="长度"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/numberL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15sp"
+                    android:ems="8"
+                    android:inputType="textShortMessage" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top"
+                android:gravity="center">
+                <com.aigestudio.wheelpicker.WheelPicker
+                    android:id="@+id/fromL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="142dp"
+                    android:background="#ffffff"
+                    android:layout_marginRight="20sp"
+                    app:wheel_item_text_size="20sp" />
+
+                <com.aigestudio.wheelpicker.WheelPicker
+                    android:id="@+id/toL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="143dp"
+                    android:background="#ffffff"
+                    app:wheel_item_text_size="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lin_v"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/inputV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ver"
+                    android:textSize="30sp" />
+                <EditText
+                    android:id="@+id/numberV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15sp"
+                    android:ems="8"
+                    android:inputType="number" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top"
+                android:gravity="center">
+
+                <com.aigestudio.wheelpicker.WheelPicker
+                    android:id="@+id/fromV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="142dp"
+                    android:background="#ffffff"
+                    android:layout_marginRight="20sp"
+                    app:wheel_item_text_size="20sp" />
+
+                <com.aigestudio.wheelpicker.WheelPicker
+                    android:id="@+id/toV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="143dp"
+                    android:background="#ffffff"
+                    app:wheel_item_text_size="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:textSize="30sp"
+        android:text="result:" />
+</LinearLayout>
